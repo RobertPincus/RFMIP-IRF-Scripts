@@ -1,0 +1,60 @@
+description: "RFMIP experiment rad-irf data catalog"
+
+plugins:
+  source:
+    - module: intake_xarray
+
+sources:
+
+  LBLRTM:
+    description: LBLRTM-12-8
+    args:
+      path: "{{CATALOG_DIR}}/LBLRTM.yml"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+
+  RTE_RRTMGP:
+    description: RTE-RRTMGP-181204
+    args:
+      path: "{{CATALOG_DIR}}/RTE-RRTMGP.yml"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+
+  generic:
+     description: generic
+     driver: opendap
+     args: #https://esgf3.dkrz.de/thredds/dodsC/cmip6/RFMIP/RTE-RRTMGP-Consortium/RTE-RRTMGP-181204/rad-irf/r1i1p1f1/Efx/rlu/gn/v20191007/rlu_Efx_RTE-RRTMGP-181204_rad-irf_r1i1p1f1_gn.nc
+      urlpath: https://{{url_root}}/RFMIP/{{source}}/{{model}}/rad-irf/r1i1p{{phys_index}}f{{force_index}}/Efx/{{var}}/gn/{{version}}/{{var}}_Efx_{{model}}_rad-irf_r1i1p1f1_gn.nc
+      auth: null
+      chunks: {}
+     parameters:
+       url_root:
+         description: ESGF OpenDAP access point
+         type: str
+         default: esgf3.dkrz.de/thredds/dodsC/cmip6
+       source:
+         description: CMIP6 source (institution short name)
+         default: AER
+         type: str
+       model:
+         description: CMIP6 model name
+         default: LBLRTM-12-8
+         type: str
+       phys_index:
+         description: physics index
+         default: 1
+         type: int
+         allowed: [1, 2, 3, 4]
+       force_index:
+         description: forcing index
+         default: 1
+         type: int
+         allowed: [1, 2, 3]
+       version:
+         description: version
+         type: str
+       var:
+         description: variable
+         type: str
+         default: rlu
+         allowed: [rlu, rld, rsu, rsd]

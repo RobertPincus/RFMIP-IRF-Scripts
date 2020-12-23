@@ -1,0 +1,13 @@
+description: "RTE-RRTMGP (RTE-RRTMGP-181204) rad-irf data catalog"
+
+plugins:
+  source:
+    - module: intake_xarray
+
+sources:
+  p1f1:
+    description: RTE-RRTMGP-181204
+    args:
+      path: "{{CATALOG_DIR}}/RTE-RRTMGP-p1f1.yml"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}

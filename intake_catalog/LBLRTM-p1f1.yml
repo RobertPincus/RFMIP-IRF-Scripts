@@ -1,0 +1,20 @@
+description: "LBLRTM (LBLRTM-12-8) p1f1 rad-irf data catalog"
+
+plugins:
+  source:
+    - module: intake_xarray
+
+sources:
+  rlu:
+    driver: opendap
+    args:
+      auth: null
+      chunks: {}
+      urlpath: https://esgf3.dkrz.de/thredds/dodsC/cmip6/RFMIP/AER/LBLRTM-12-8/rad-irf/r1i1p1f1/Efx/rlu/gn/v20190514/rlu_Efx_LBLRTM-12-8_rad-irf_r1i1p1f1_gn.nc
+
+  rld:
+    driver: opendap
+    args:
+      auth: null
+      chunks: {}
+      urlpath: https://esgf3.dkrz.de/thredds/dodsC/cmip6/RFMIP/AER/LBLRTM-12-8/rad-irf/r1i1p1f1/Efx/rld/gn/v20190514/rld_Efx_LBLRTM-12-8_rad-irf_r1i1p1f1_gn.nc

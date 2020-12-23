@@ -1,0 +1,27 @@
+description: "LBLRTM (LBLRTM-12-8) rad-irf data catalog"
+
+plugins:
+  source:
+    - module: intake_xarray
+
+sources:
+  p1f1:
+    description: LBLRTM-12-8 p1f1
+    args:
+      path: "{{CATALOG_DIR}}/LBLRTM-p1f1.yml"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+
+  p1f2:
+    description: LBLRTM-12-8 p1f2
+    args:
+      path: "{{CATALOG_DIR}}/LBLRTM-p1f2.yml"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
+
+  p1f3:
+    description: LBLRTM-12-8 p1f3
+    args:
+      path: "{{CATALOG_DIR}}/LBLRTM-p1f3.yml"
+    driver: intake.catalog.local.YAMLFileCatalog
+    metadata: {}
